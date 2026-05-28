@@ -153,7 +153,7 @@ static __global__ __launch_bounds__(TPB, 4)
 void d_encode(const byte* const __restrict__ input, const int insize, byte* const __restrict__ output, int* const __restrict__ outsize, int* const __restrict__ fullcarry)
 {
   // allocate shared memory buffer
-  __shared__ long long chunk [2 * (CS / sizeof(long long)) + 4 + 17];
+  __shared__ long long chunk [2 * (CS / sizeof(long long)) + WS + 1];
   const int last = 2 * (CS / sizeof(long long)) + WS;
 
   // create the 3 shared memory buffers
